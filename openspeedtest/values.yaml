@@ -1,0 +1,17 @@
+# Default values for openspeedtest.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+openspeedtest:
+  replicaCount: 1
+  ingress:
+    enabled: true
+    className: nginx
+    annotations: {}
+    hosts:
+     - host: speedtest.nowak
+       paths:
+        - path: /
+          pathType: Prefix
+
+

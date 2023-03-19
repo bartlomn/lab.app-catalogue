@@ -1,0 +1,6 @@
+dependencies:
+- name: openspeedtest
+  repository: https://openspeedtest.github.io/Helm-chart/
+  version: 0.1.1
+digest: sha256:c927f451429858de38b01d64a369e589290842942745373a6d115aeff678164c
+generated: "2023-03-19T22:04:02.993774+01:00"
