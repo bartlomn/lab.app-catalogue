@@ -6,6 +6,8 @@ namespace: openspeedtest
 
 openspeedtest:
   replicaCount: 1
+  service:
+    type: ClusterIP
   ingress:
     enabled: true
     className: nginx
