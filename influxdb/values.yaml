@@ -9,10 +9,9 @@ influxdb:
   global.storageClass: microk8s-hostpath
   auth.enabled: true
   auth.admin.username: admin
-  # the below didn't work, so we'll create an ingress on our own
-  # ingress.enabled: true
-  # ingress.pathType: Prefix
-  # ingress.hostname: influxdb.nowak
-  ingress.ingressClassName: nginx
+  ingress.enabled: true
+  ingress.pathType: Prefix
+  ingress.hostname: influxdb.nowak
+  ingress.ingressClassName: "nginx"
   persistence.storageClass: microk8s-hostpath
   persistence.size: 10Gi
