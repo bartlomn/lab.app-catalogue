@@ -1,0 +1,17 @@
+# Default values for influxdb.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: influxdb
+
+# https://artifacthub.io/packages/helm/bitnami/influxdb
+influxdb:
+  global.storageClass: microk8s-hostpath
+  auth.enabled: true
+  auth.admin.username: admin
+  ingress.enabled: true
+  ingress.pathType: Prefix
+  ingress.hostname: influxdb.nowak
+  ingress.ingressClassName: nginx
+  persistence.storageClass: microk8s-hostpath
+  persistence.size: 10Gi
