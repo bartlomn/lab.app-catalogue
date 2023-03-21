@@ -22,6 +22,4 @@ grafana:
   env:
   - name: GF_ANALYTICS_REPORTING_ENABLED
     value: "false"
-  - name: GF_SERVER_DOMAIN
-    value: grafana.nowak
   sidecar.plugins.enabled: true
