@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: influxdb-http-ingress
   namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   rules:
   - host: influxdb.nowak
@@ -22,6 +24,8 @@ kind: Ingress
 metadata:
   name: influxdb-rpc-ingress
   namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   rules:
   - host: rpc.influxdb.nowak
