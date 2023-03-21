@@ -1,0 +1,27 @@
+# Default values for grafana.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+namespace: grafana
+
+# https://artifacthub.io/packages/helm/grafana/grafana?modal=values
+grafana:
+  replicas: 1
+  ingress.enabled: true
+  ingress.hosts:
+    - grafana.nowak
+  persistence.enabled: true
+  persistence.size: 20Gi
+  persistence.storageClassName: microk8s-hostpath
+  plugins:
+  - grafana-clock-panel
+  - grafana-simple-json-datasource
+  - grafana-piechart-panel
+  - grafana-worldmap-panel
+  env:
+  - name: GF_ANALYTICS_REPORTING_ENABLED
+    value: "false"
+  - name: GF_SERVER_DOMAIN
+    value: grafana.nowak
+  sidecar.plugins.enabled: true
