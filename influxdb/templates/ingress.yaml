@@ -28,7 +28,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   rules:
-  - host: rpc.influxdb.nowak
+  - host: influxdb-rpc.nowak
     http:
       paths:
       - path: /
