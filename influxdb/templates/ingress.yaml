@@ -1,12 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: influxdb-ingress
+  name: influxdb-http-ingress
   namespace: {{ .Values.namespace }}
-  # annotations:
-  #   nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  #   nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-  #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
   - host: influxdb.nowak
@@ -19,4 +15,23 @@ spec:
             name: influxdb
             port:
               number: 8086
+  ingressClassName: nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: influxdb-rpc-ingress
+  namespace: {{ .Values.namespace }}
+spec:
+  rules:
+  - host: rpc.influxdb.nowak
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: influxdb
+            port:
+              number: 8088
   ingressClassName: nginx
