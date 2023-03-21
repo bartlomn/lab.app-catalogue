@@ -8,10 +8,6 @@ namespace: grafana
 # https://artifacthub.io/packages/helm/grafana/grafana?modal=values
 grafana:
   replicas: 1
-  ingress.enabled: true
-  ingressClassName: nginx
-  ingress.hosts:
-    - grafana.nowak
   persistence.enabled: true
   persistence.size: 20Gi
   persistence.storageClassName: microk8s-hostpath
