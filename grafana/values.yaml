@@ -9,14 +9,12 @@ namespace: grafana
 grafana:
   replicas: 1
   ingress.enabled: true
+  ingressClassName: nginx
   ingress.hosts:
     - grafana.nowak
   persistence.enabled: true
   persistence.size: 20Gi
   persistence.storageClassName: microk8s-hostpath
-  admin.existingSecret: admin-credentials
-  admin.userKey: username
-  admin.passwordKey: password
   plugins:
   - grafana-clock-panel
   - grafana-simple-json-datasource
