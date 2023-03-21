@@ -23,6 +23,4 @@ grafana:
   - grafana-piechart-panel
   - grafana-worldmap-panel
   env:
-  - name: GF_ANALYTICS_REPORTING_ENABLED
-    value: "false"
-  sidecar.plugins.enabled: true
+    GF_ANALYTICS_REPORTING_ENABLED: "false"
