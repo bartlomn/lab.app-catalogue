@@ -18,24 +18,3 @@ spec:
             port:
               number: 8086
   ingressClassName: nginx
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: influxdb-rpc-ingress
-  namespace: {{ .Values.namespace }}
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-spec:
-  rules:
-  - host: influxdb-rpc.nowak
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: influxdb
-            port:
-              number: 8088
-  ingressClassName: nginx
