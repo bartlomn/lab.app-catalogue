@@ -4,16 +4,17 @@
 
 # https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values
 prometheus:
-  alertmanager.persistence.size: 5Gi
-  server.baseURL: http://prom.nowak
-  server.persistentVolume.enabled: true
-  server.persistentVolume.size: 10Gi
-  server.persistentVolume.storageClass: microk8s-hostpath
-  server.replicaCount: 1
-  server.statefulSet.enabled: false
-  server.retention: "1y"
-  extraScrapeConfigs: |
-    - job_name: lab_host
-      static_configs:
-        - targets: ['lab.nowak:9100']
+  alertmanager:
+    persistence:
+      size: 5Gi
+  server:
+    baseURL: http://prom.nowak
+    persistentVolume:
+      enabled: true
+      size: 50Gi
+      storageClass: microk8s-hostpath
+    replicaCount: 1
+    statefulSet:
+      enabled: false
+    retention: "1y"
   forceNamespace: prometheus
