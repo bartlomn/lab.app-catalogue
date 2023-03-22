@@ -11,7 +11,7 @@ prometheus:
   server.persistentVolume.storageClass: microk8s-hostpath
   server.replicaCount: 1
   server.statefulSet.enabled: false
-  server.retention: "31d"
+  server.retention: "1y"
   extraScrapeConfigs: |
     - job_name: lab_host
       static_configs:
