@@ -8,7 +8,6 @@ prometheus:
     persistence:
       size: 5Gi
   server:
-    baseURL: http://prom.nowak
     persistentVolume:
       enabled: true
       size: 50Gi
