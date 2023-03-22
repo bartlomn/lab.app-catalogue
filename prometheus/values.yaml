@@ -1,0 +1,22 @@
+# Default values for prometheus.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values
+prometheus:
+  server.baseURL: http://prom.nowak
+  server.ingress.enabled: true
+  server.ingress.ingressClassName: nginx
+  server.ingress.hosts:
+    - prom.nowak
+  server.persistentVolume.enabled: true
+  server.persistentVolume.size: 20Gi
+  server.persistentVolume.storageClass: microk8s-hostpath
+  server.replicaCount: 1
+  server.statefulSet.enabled: false
+  server.retention: "31d"
+  extraScrapeConfigs: |
+    - job_name: lab_host
+      static_configs:
+        - targets: ['lab.nowak:9100']
+  forceNamespace: prometheus
