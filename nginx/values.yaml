@@ -15,12 +15,8 @@ nginx-ingress:
     service:
       type: ClusterIP
     serviceMonitor:
-      create: true
-    pod:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "9113"
-        prometheus.io/scheme: http
+      create: false
+      name: nginx-ingress
     enableLatencyMetrics: true
     disableIPV6: true
   prometheus:
