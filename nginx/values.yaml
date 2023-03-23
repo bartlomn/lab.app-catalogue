@@ -4,6 +4,7 @@
 
 namespace: ingress-nginx
 
+# https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx?modal=values
 ingress-nginx:
   controller:
     extraArgs:
@@ -25,26 +26,3 @@ ingress-nginx:
   defaultBackend:
     enabled: true
 
-
-# https://artifacthub.io/packages/helm/nginx/nginx-ingress/0.16.2?modal=values
-# nginx-ingress:
-#   controller:
-#     enableCertManager: true
-#     setAsDefaultIngress: true
-#     enableTLSPassthrough: true
-#     enableSnippets: true
-#     healthStatus: true
-#     healthStatusURI: "/nginx-health"
-#     service:
-#       type: LoadBalancer
-#     serviceMonitor:
-#       create: false
-#       name: nginx-ingress
-#     enableLatencyMetrics: true
-#     disableIPV6: true
-#     config:
-#       entries:
-#         log-format: '$remote_addr - $remote_user [$time_local] "$request" $status $grpc_status $body_bytes_sent "$http_referer"  "$http_user_agent" "$http_x_forwarded_for" "$resource_name" "$resource_type" "$resource_namespace" "$service"'
-#   prometheus:
-#     create: true
-#     port: 9113
