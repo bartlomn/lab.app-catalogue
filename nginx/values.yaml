@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+namespace: nginx-ingress
+
 # https://artifacthub.io/packages/helm/nginx/nginx-ingress/0.16.2?modal=values
 nginx-ingress:
   controller:
