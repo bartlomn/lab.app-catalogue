@@ -7,7 +7,7 @@ namespace: ingress-nginx
 ingress-nginx:
   controller:
     extraArgs:
-      --enable-ssl-passthrough: "true"
+      enable-ssl-passthrough: ""
     admissionWebhooks:
       certManager:
         enabled: true
@@ -18,6 +18,11 @@ ingress-nginx:
             kind: ClusterIssuer
     metrics:
       enabled: true
+      service:
+        annotations:
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
+          prometheus.io/scheme: http
   defaultBackend:
     enabled: true
 
