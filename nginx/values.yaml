@@ -13,7 +13,7 @@ nginx-ingress:
     healthStatus: true
     healthStatusURI: "/nginx-health"
     service:
-      type: ClusterIP
+      type: LoadBalancer
     serviceMonitor:
       create: false
       name: nginx-ingress
