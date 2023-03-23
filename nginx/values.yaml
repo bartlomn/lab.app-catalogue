@@ -12,7 +12,6 @@ ingress-nginx:
       certManager:
         enabled: true
         admissionCert:
-          duration: "1y"
           issuerRef:
             name: selfsigned-cluster-issuer
             kind: ClusterIssuer
