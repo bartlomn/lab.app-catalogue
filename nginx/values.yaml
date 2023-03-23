@@ -19,6 +19,9 @@ nginx-ingress:
       name: nginx-ingress
     enableLatencyMetrics: true
     disableIPV6: true
+    config:
+      entries:
+        log-format: '$remote_addr - $remote_user [$time_local] "$request" $status $grpc_status $body_bytes_sent "$http_referer"  "$http_user_agent" "$http_x_forwarded_for" "$resource_name" "$resource_type" "$resource_namespace" "$service"'
   prometheus:
     create: true
     port: 9113
