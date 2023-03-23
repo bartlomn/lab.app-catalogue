@@ -13,6 +13,8 @@ grafana:
     ingressClassName: nginx
     hosts:
       - grafana.nowak
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   persistence:
     enabled: true
     size: 50Gi
