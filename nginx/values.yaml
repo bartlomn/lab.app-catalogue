@@ -7,6 +7,7 @@ namespace: nginx-ingress
 # https://artifacthub.io/packages/helm/nginx/nginx-ingress/0.16.2?modal=values
 nginx-ingress:
   controller:
+    enableCertManager: true
     setAsDefaultIngress: true
     enableTLSPassthrough: true
     enableSnippets: true
