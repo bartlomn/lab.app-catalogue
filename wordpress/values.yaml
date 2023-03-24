@@ -15,8 +15,7 @@ wordpress:
     ingressClassName: nginx
     annotations:
       cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     tls: true
   persistence:
     storageClass: microk8s-hostpath
