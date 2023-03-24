@@ -7,3 +7,13 @@ reclaimPolicy: Delete
 parameters:
   pvDir: /home/hostpath-pvs
 volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: big-hostpath
+provisioner: microk8s.io/hostpath
+reclaimPolicy: Delete
+parameters:
+  pvDir: /usr/hostpath-pvs
+volumeBindingMode: WaitForFirstConsumer
