@@ -1,0 +1,27 @@
+# Default values for sftpgo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: sftpgo
+
+# https://artifacthub.io/packages/helm/sagikazarmark/sftpgo?modal=values
+sftpgo:
+  ftpd:
+    enabled: true
+  ui:
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    hosts:
+      - host: sftpgo.nowak
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: sftpgo-ingress-secret
+        hosts:
+          - sftpgo.nowak
+
