@@ -35,8 +35,4 @@ cockroachdb:
   tls:
     certs:
       selfSigner:
-        enabled: false
-      certManager: true
-      certManagerIssuer:
-        name: selfsigned-cluster-issuer
-        kind: ClusterIssuer
+        enabled: true
