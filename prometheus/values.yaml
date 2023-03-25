@@ -17,3 +17,5 @@ prometheus:
       enabled: false
     retention: "1y"
   forceNamespace: prometheus
+  prometheus-pushgateway:
+    enabled: false
