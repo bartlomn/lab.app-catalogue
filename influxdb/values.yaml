@@ -14,7 +14,7 @@ influxdb:
   metrics:
     enabled: true
     service:
-      port: 9122
+      port: 8086
   persistence:
     storageClass: microk8s-hostpath
     size: 50Gi
