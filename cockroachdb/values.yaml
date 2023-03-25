@@ -34,6 +34,7 @@ cockroachdb:
       size: 50Gi
       storageClass: ssd-hostpath
   tls:
+    enabled: false
     certs:
       selfSigner:
-        enabled: true
+        enabled: false
