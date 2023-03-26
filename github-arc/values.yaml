@@ -12,3 +12,5 @@ actions-runner-controller:
     enabled: true
     create: false
     name: "arc-gh-auth"
+  githubWebhookServer:
+    useRunnerGroupsVisibility: true
