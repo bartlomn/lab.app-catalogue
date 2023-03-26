@@ -4,6 +4,7 @@
 
 namespace: github-arc
 organization: Rototip
+group: development
 
 # https://github.com/actions/actions-runner-controller/tree/master/charts/actions-runner-controller
 actions-runner-controller:

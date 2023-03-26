@@ -8,3 +8,6 @@ spec:
   template:
     spec:
       organization: {{ .Values.organization }}
+      securityContext:
+        fsGroup: 1001
+      group: {{ .Values.group }}
