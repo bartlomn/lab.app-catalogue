@@ -1,0 +1,13 @@
+# Default values for github-arc.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: github-arc
+organization: Rototip
+
+# https://github.com/actions/actions-runner-controller/tree/master/charts/actions-runner-controller
+actions-runner-controller:
+  authSecret:
+    enabled: true
+    create: false
+    name: "arc-gh-auth"
