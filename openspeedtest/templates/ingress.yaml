@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-server-ingress
+  name: docker-registry-ingress
   namespace: {{ .Values.namespace }}
 #   annotations:
 #     cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
