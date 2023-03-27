@@ -15,9 +15,9 @@ docker-registry:
     size: 50Gi
     storageClass: big-hostpath
   metrics:
-    enabled: true
+    enabled: false
     port: 5001
-  service:
-    annotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "5001"
+  # service:
+  #   annotations:
+  #     prometheus.io/scrape: "true"
+  #     prometheus.io/port: "5001"
