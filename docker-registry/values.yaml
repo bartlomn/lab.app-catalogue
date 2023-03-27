@@ -17,15 +17,15 @@ docker-registry:
   metrics:
     enabled: false
     port: 5001
-  # service:
-  #   annotations:
-  #     prometheus.io/scrape: "true"
-  #     prometheus.io/port: "5001"
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "5001"
 
 docker-registry-ui:
   ui:
     deleteImages: true
-    dockerRegistryUrl: http://docker-registry.docker-registry.svc.cluster.local
+    dockerRegistryUrl: http://dockerregistry.nowak
     singleRegistry: false
     runAsRoot: false
     service:
