@@ -7,9 +7,9 @@ namespace: docker-registry
 # https://artifacthub.io/packages/helm/twuni/docker-registry?modal=values
 docker-registry:
   ingress:
-    enabled: false
+    enabled: true
     hosts:
-      dockerregistry.nowak
+      - docker-registry.nowak
   persistence:
     enabled: true
     size: 50Gi
