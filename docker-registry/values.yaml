@@ -21,3 +21,16 @@ docker-registry:
   #   annotations:
   #     prometheus.io/scrape: "true"
   #     prometheus.io/port: "5001"
+
+docker-registry-ui:
+  ui:
+    deleteImages: true
+    dockerRegistryUrl: http://docker-registry.docker-registry.svc.cluster.local
+    singleRegistry: false
+    runAsRoot: false
+    service:
+      port: 8080
+      targetPort: 8080
+    ingress:
+      enabled: true
+      host: dockerregistryui.nowak

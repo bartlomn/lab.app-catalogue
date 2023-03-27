@@ -30,3 +30,6 @@ dependencies:
 - name: docker-registry
   version: "2.2.2"
   repository: "https://helm.twun.io"
+- name: docker-registry-ui
+  version: "1.0.0"
+  repository: "https://helm.joxit.dev"
