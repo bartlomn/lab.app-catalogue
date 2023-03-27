@@ -9,7 +9,7 @@ docker-registry:
   ingress:
     enabled: true
     hosts:
-      - docker-registry.nowak
+      - dockerregistry.nowak
   persistence:
     enabled: true
     size: 50Gi
