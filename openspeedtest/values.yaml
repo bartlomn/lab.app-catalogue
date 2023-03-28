@@ -11,11 +11,16 @@ openspeedtest:
   ingress:
     enabled: true
     className: nginx
-    annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-     - host: speedtest.nowak
+     - host: speedtest.bnowak.com
        paths:
         - path: /
           pathType: Prefix
+    tls:
+    - hosts:
+      - speedtest.bnowak.com
+      secretName: speedtest-ingress-tls-cert
 
 
