@@ -28,5 +28,5 @@ appVersion: "2.6.1"
 # https://helm.sh/docs/topics/charts/#chart-dependencies
 dependencies:
 - name: influxdb
-  version: "5.4.18"
+  version: "5.4.19"
   repository: "https://charts.bitnami.com/bitnami"

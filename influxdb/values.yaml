@@ -6,15 +6,29 @@ namespace: influxdb
 
 # https://artifacthub.io/packages/helm/bitnami/influxdb
 influxdb:
+  auth:
+    # the xpected keys are `admin-user-password` and `admin-user-token`.
+    # see: https://github.com/bitnami/charts/blob/main/bitnami/influxdb/templates/deployment.yaml#L132
+    existingSecret: influxdb-auth
+    admin:
+      username: admin
+      org: swvan
+      bucket: primary
   ingress:
     enabled: true
     pathType: Prefix
-    hostname: influxdb.nowak
+    hostname: influxdb.bnowak.com
     ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls: true
   metrics:
     enabled: true
     service:
       port: 8086
+    serviceMonitor:
+      enabled: true
+      interval: 60s
   persistence:
-    storageClass: microk8s-hostpath
+    storageClass: ssd-hostpath
     size: 50Gi
