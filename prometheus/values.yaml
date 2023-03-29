@@ -28,7 +28,7 @@ prometheus:
       storageClass: big-hostpath
     replicaCount: 1
     statefulSet:
-      enabled: false
+      enabled: true
     retention: "365d"
   alertmanager:
     persistence:
