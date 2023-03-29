@@ -1,6 +1,6 @@
 # github-arc
 
-# Deployment
+## Deployment
 
 The deployment here needs to be staged, because we need to deal with secret for github auth
 
@@ -22,4 +22,6 @@ kubectl create secret generic ${SECRET_NAME} \
     --from-file=github_app_private_key=${PRIVATE_KEY_FILE_PATH}
 ```
 
-- sync the rest of the app
+- sync CRDS, use replace feature
+- sync the rest of the app APART FROM the deployment
+- sync the deployment
