@@ -1,0 +1,89 @@
+# Default values for prom-stack.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: monitoring
+
+# https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack?modal=values
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      enabled: true
+      pathType: Prefix
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - alertmanager.bnowak.com
+      tls:
+        - hosts:
+            - alertmanager.bnowak.com
+          secretName: alertmanager-server-ingress-tls-cert
+    alertmanagerSpec:
+      retention: 336h
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: big-hostpath
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 5Gi
+  grafana:
+    ingress:
+      enabled: true
+      pathType: Prefix
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - grafana.bnowak.com
+      tls:
+        - hosts:
+            - grafana.bnowak.com
+          secretName: grafana-ingress-tls-cert
+    persistence:
+      enabled: true
+      size: 50Gi
+      storageClassName: big-hostpath
+    plugins:
+      - grafana-clock-panel
+      - grafana-simple-json-datasource
+      - grafana-piechart-panel
+      - grafana-worldmap-panel
+  kubeApiServer:
+    tlsConfig:
+      insecureSkipVerify: true
+  kubelet:
+    serviceMonitor:
+      interval: 10s
+  kubeControllerManager:
+    serviceMonitor:
+      insecureSkipVerify: true
+  prometheus:
+    ingress:
+      enabled: true
+      pathType: Prefix
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - prometheus.bnowak.com
+      tls:
+        - hosts:
+            - prometheus.bnowak.com
+          secretName: prometheus-server-ingress-tls-cert
+    prometheusSpec:
+      scrapeInterval: 30s
+      scrapeTimeout: 5s
+      enableAdminAPI: true
+      retention: 365d
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: big-hostpath
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 100Gi
+  cleanPrometheusOperatorObjectNames: true
