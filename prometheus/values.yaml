@@ -4,20 +4,32 @@
 
 # https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values
 prometheus:
-  alertmanager:
-    persistence:
-      size: 5Gi
   server:
+    baseURL: prom.bnowak.com
     global:
       scrape_interval: 60s
+      scrape_timeout: 10s
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - prom.bnowak.com
+      tls:
+        - hosts:
+            - prom.bnowak.com
+          secretName: prometheus-server-ingress-tls-cert
     persistentVolume:
       enabled: true
       size: 50Gi
-      storageClass: microk8s-hostpath
+      storageClass: big-hostpath
     replicaCount: 1
     statefulSet:
       enabled: false
-    retention: "1y"
-  forceNamespace: prometheus
+    retention: "365d"
+  alertmanager:
+    persistence:
+      size: 5Gi
   prometheus-pushgateway:
     enabled: false
