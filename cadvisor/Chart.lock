@@ -1,0 +1,6 @@
+dependencies:
+- name: cadvisor
+  repository: https://ckotzbauer.github.io/helm-charts
+  version: 2.2.4
+digest: sha256:4b54b4cc9f20b7132181928ec6a4076d14c18a4085e721d097fd7fddc1f8cfb7
+generated: "2023-03-29T13:29:09.899098+02:00"
