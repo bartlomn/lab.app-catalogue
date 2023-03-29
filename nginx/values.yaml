@@ -23,6 +23,9 @@ ingress-nginx:
           prometheus.io/scrape: "true"
           prometheus.io/port: "10254"
           prometheus.io/scheme: http
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 10.83.20.201
   defaultBackend:
     enabled: false
 
