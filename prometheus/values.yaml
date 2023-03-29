@@ -5,7 +5,7 @@
 # https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values
 prometheus:
   server:
-    baseURL: prom.bnowak.com
+    baseURL: prometheus.bnowak.com
     global:
       scrape_interval: 60s
       scrape_timeout: 10s
@@ -15,10 +15,10 @@ prometheus:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - prom.bnowak.com
+        - prometheus.bnowak.com
       tls:
         - hosts:
-            - prom.bnowak.com
+            - prometheus.bnowak.com
           secretName: prometheus-server-ingress-tls-cert
     persistentVolume:
       enabled: true
