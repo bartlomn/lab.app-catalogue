@@ -87,3 +87,11 @@ kube-prometheus-stack:
               requests:
                 storage: 100Gi
   cleanPrometheusOperatorObjectNames: true
+  prometheusOperator:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1Gi
+      limits:
+        cpu: 200m
+    
