@@ -1,0 +1,80 @@
+# Default values for harbor.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: harbor
+
+# https://artifacthub.io/packages/helm/harbor/harbor
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: true
+      certSource: secret
+      secret:
+        # The name of secret which contains keys named:
+        # "tls.crt" - the certificate
+        # "tls.key" - the private key
+        # which is conveniently what cert-manager provides us
+        secretName: "harbor-ingress-cert"
+        notarySecretName: "harbor-ingress-cert"
+    ingress:
+      hosts:
+        core: harbor.bnowak.com
+        notary: notary.bnowak.com
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  externalURL: https://harbor.bnowak.com
+  persistence:
+    enabled: true
+    resourcePolicy: ""
+    persistentVolumeClaim:
+      registry:
+        storageClass: big-hostpath
+        size: 50Gi
+      jobservice:
+        jobLog:
+          storageClass: ssd-hostpath
+          size: 2Gi
+      database:
+        storageClass: ssd-hostpath
+        size: 2Gi
+      redis:
+        storageClass: ssd-hostpath
+        size: 1Gi
+      trivy:
+        storageClass: ssd-hostpath
+        size: 5Gi
+    imageChartStorage:
+      disableredirect: true
+      type: filesystem
+  existingSecretAdminPassword: harbor-admin-auth
+  existingSecretAdminPasswordKey: admin-password
+  # If using existingSecretSecretKey, the key must be secretKey
+  existingSecretSecretKey: harbor-secret-key
+  portal:
+    revisionHistoryLimit: 3
+  core:
+    revisionHistoryLimit: 3
+  jobservice:
+    revisionHistoryLimit: 3
+  registry:
+    revisionHistoryLimit: 3
+    credentials:
+      username: harbor-user
+      # If using existingSecret, the key must be REGISTRY_PASSWD and REGISTRY_HTPASSWD
+      existingSecret: "harbor-registry-auth"
+  trivy:
+    revisionHistoryLimit: 3
+    securityCheck: "vuln,config,secret"
+  exporter:
+    revisionHistoryLimit: 3
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  trace:
+    enabled: false

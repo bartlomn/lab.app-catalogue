@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: harbor-ingress-cert
+  namespace: {{ .Values.namespace }}
+spec:
+  secretName: {{ .Values.harbor.expose.tls.secret.secretName }}
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  duration: 2160h # 90d
+  renewBefore: 720h # 30d before SSL will expire, renew it
+  commonName: 'harbor.bnowak.com'
+  dnsNames:
+    - 'harbor.bnowak.com'
+    - 'notary.bnowak.com'
