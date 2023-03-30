@@ -1,9 +1,0 @@
-dependencies:
-- name: docker-registry
-  repository: https://helm.twun.io
-  version: 2.2.2
-- name: docker-registry-ui
-  repository: https://helm.joxit.dev
-  version: 1.0.0
-digest: sha256:39d5c7ab843c086deb8409528f77cf98d48bdbc4dc861de98ee1b9ad3561bf9f
-generated: "2023-03-27T12:12:37.755963+02:00"
