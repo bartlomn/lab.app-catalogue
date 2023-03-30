@@ -80,10 +80,8 @@ kube-prometheus-stack:
       retention: 365d
       resources:
         requests:
-          cpu: 100m
+          cpu: 150m
           memory: 1Gi
-        limits:
-          cpu: 250m
       storageSpec:
         volumeClaimTemplate:
           spec:
