@@ -8,8 +8,8 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  duration: 2160h # 90d
-  renewBefore: 720h # 30d before SSL will expire, renew it
+  duration: 2160h1m1s # 90d
+  renewBefore: 720h1m1s # 30d before SSL will expire, renew it
   commonName: 'harbor.bnowak.com'
   dnsNames:
     - 'harbor.bnowak.com'

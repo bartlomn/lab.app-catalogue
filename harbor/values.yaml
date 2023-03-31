@@ -5,6 +5,7 @@
 namespace: harbor
 
 # https://artifacthub.io/packages/helm/harbor/harbor
+# https://github.com/goharbor/harbor-helm/blob/master/values.yaml
 harbor:
   expose:
     type: ingress
@@ -51,10 +52,6 @@ harbor:
     imageChartStorage:
       disableredirect: true
       type: filesystem
-  existingSecretAdminPassword: harbor-admin-auth
-  existingSecretAdminPasswordKey: admin-password
-  # If using existingSecretSecretKey, the key must be secretKey
-  existingSecretSecretKey: harbor-secret-key
   portal:
     revisionHistoryLimit: 3
   core:
@@ -63,10 +60,6 @@ harbor:
     revisionHistoryLimit: 3
   registry:
     revisionHistoryLimit: 3
-    credentials:
-      username: harbor-user
-      # If using existingSecret, the key must be REGISTRY_PASSWD and REGISTRY_HTPASSWD
-      existingSecret: "harbor-registry-auth"
   trivy:
     revisionHistoryLimit: 3
     securityCheck: "vuln,config,secret"
