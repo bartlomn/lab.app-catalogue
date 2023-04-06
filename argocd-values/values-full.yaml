@@ -1,8 +1,33 @@
+global:
+  logging:
+    # -- Set the global logging format. Either: `text` or `json`
+    format: text
+    # -- Set the global logging level. One of: `debug`, `info`, `warn` or `error`
+    level: info
 configs:
   repositories:
     app-catalogue: 
       url: https://github.com/bartlomn/lab.app-catalogue
+controller:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+dex:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+redis:
+  exporter:
+    enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
 server:
+  extensions:
+    enabled: true
   ingress:
     enabled: true
     annotations:
@@ -17,3 +42,22 @@ server:
       - argocd.bnowak.com
       secretName: argocd-ingress-cert # < cert-manager will store the created certificate in this secret.
     https: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+repoServer:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+applicationSet:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+notifications:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
