@@ -1,0 +1,3 @@
+configs:
+  repositories:
+    app-catalogue: https://github.com/bartlomn/lab.app-catalogue
