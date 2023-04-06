@@ -12,3 +12,6 @@ spec:
         fsGroup: 1001
       group: {{ .Values.group }}
       dockerMTU: 1450
+      env:
+        - name: ARC_DOCKER_MTU_PROPAGATION
+          value: "true"
