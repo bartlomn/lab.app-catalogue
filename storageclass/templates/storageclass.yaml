@@ -2,6 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: ssd-hostpath
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
 provisioner: microk8s.io/hostpath
 reclaimPolicy: Delete
 parameters:
@@ -11,9 +13,7 @@ volumeBindingMode: WaitForFirstConsumer
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: big-hostpath
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
+  name: hdd-hostpath
 provisioner: microk8s.io/hostpath
 reclaimPolicy: Delete
 parameters:

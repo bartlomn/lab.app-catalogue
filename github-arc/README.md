@@ -15,8 +15,8 @@ Get all the details needed to create the secret
 - create the secret, like so
 
 ```jsx
-kubectl create secret generic ${SECRET_NAME} \
-    -n ${NAMESPACE} \
+kubectl create secret generic arc-gh-auth \
+    -n github-arc \
     --from-literal=github_app_id=${APP_ID} \
     --from-literal=github_app_installation_id=${INSTALLATION_ID} \
     --from-file=github_app_private_key=${PRIVATE_KEY_FILE_PATH}
