@@ -11,3 +11,4 @@ spec:
       securityContext:
         fsGroup: 1001
       group: {{ .Values.group }}
+      dockerMTU: 1450
