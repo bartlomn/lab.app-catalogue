@@ -1,3 +1,4 @@
 configs:
   repositories:
-    app-catalogue: https://github.com/bartlomn/lab.app-catalogue
+    app-catalogue: 
+      url: https://github.com/bartlomn/lab.app-catalogue
