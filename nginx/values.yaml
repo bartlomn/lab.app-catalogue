@@ -23,6 +23,10 @@ ingress-nginx:
           prometheus.io/scrape: "true"
           prometheus.io/port: "10254"
           prometheus.io/scheme: http
+      serviceMonitor:
+        enabled: true
+      prometheusRule:
+        enabled: true
     service:
       type: LoadBalancer
       loadBalancerIP: 10.83.20.201
