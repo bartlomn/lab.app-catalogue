@@ -1,0 +1,6 @@
+dependencies:
+- name: transmission-openvpn
+  repository: https://utkuozdemir.org/helm-charts
+  version: 2.5.0
+digest: sha256:7fa05af574cf979807f29254c2ec5325fb940553868e6e94e1282fd353c0e1a8
+generated: "2023-04-07T14:31:33.251687+02:00"

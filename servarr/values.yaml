@@ -1,0 +1,48 @@
+# Default values for servarr.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: servarr
+
+# https://artifacthub.io/packages/helm/utkuozdemir/transmission-openvpn?modal=values
+transmission-openvpn:
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: transmission.bnowak.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+    - hosts:
+      - transmission.bnowak.com
+      secretName: transmission-ingress-cert
+
+  persistence:
+    enabled: true
+    storageClass: hdd-hostpath
+    size: 100Gi
+
+  env:
+    LOCAL_NETWORK: "10.0.0.0/8"
+    OPENVPN_PROVIDER: "windscribe"
+    CREATE_TUN_DEVICE: "true"
+    TRANSMISSION_SPEED_LIMIT_UP: "2048"
+    TRANSMISSION_WEB_UI: "combustion"
+    PUID: "1000"
+    PGID: "1000"
+
+  secretEnv:
+    - name: OPENVPN_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: windscribe-auth
+          key: username    
+    - name: OPENVPN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: windscribe-auth
+          key: password
