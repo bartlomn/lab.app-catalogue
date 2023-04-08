@@ -34,6 +34,13 @@ app-template:
         secretKeyRef:
           name: transmission-rpc
           key: rpc-password
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 10.255.255.2
+    options:
+      - name: ndots
+        value: "5"
   probes:
     liveness:
       spec:
