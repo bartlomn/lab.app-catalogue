@@ -19,3 +19,12 @@ reclaimPolicy: Delete
 parameters:
   pvDir: /hdd-raid/hostpath-pvs
 volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
