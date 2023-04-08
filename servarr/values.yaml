@@ -7,6 +7,8 @@ namespace: servarr
 # based on
 # https://raw.githubusercontent.com/ishioni/homelab-ops/master/cluster/apps/media/transmission/helmrelease.yaml
 app-template:
+  global:
+    nameOverride: transmission
   image:
     repository: ghcr.io/onedr0p/transmission
     tag: "3.00"
@@ -46,6 +48,7 @@ app-template:
           port: 9091
     utptcp:
       enabled: true
+      nameOverride: transmission-utptcp
       type: LoadBalancer
       annotations:
         metallb.universe.tf/allow-shared-ip: transmission
