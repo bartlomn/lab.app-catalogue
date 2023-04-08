@@ -37,7 +37,7 @@ app-template:
   dnsPolicy: "None"
   dnsConfig:
     nameservers:
-      - 10.255.255.2
+      - 1.1.1.1
     options:
       - name: ndots
         value: "5"
