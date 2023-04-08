@@ -13,14 +13,14 @@ app-template:
     repository: lscr.io/linuxserver/transmission
     tag: "4.0.2"
   podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
+    runAsUser: 911
+    runAsGroup: 1001
+    fsGroup: 1001
   controller:
     type: statefulset
   env:
-    PUID: 1000
-    PGID: 1000
+    PUID: 911
+    PGID: 1001
     TRANSMISSION__BLOCKLIST_URL: "https://mirror.codebucket.de/transmission/blocklist.p2p.gz"
     TRANSMISSION__DOWNLOAD_DIR: "/downloads"
     TRANSMISSION__INCOMPLETE_DIR_ENABLED: false
@@ -31,9 +31,9 @@ app-template:
     TRANSMISSION__UMASK: 7
     TRANSMISSION__WEB_HOME: "/app/web"
   # dnsPolicy: "None"
-  # dnsConfig:
-  #   nameservers:
-  #     - 1.1.1.1
+  dnsConfig:
+    nameservers:
+      - 1.1.1.1
   #   options:
   #     - name: ndots
   #       value: "5"
