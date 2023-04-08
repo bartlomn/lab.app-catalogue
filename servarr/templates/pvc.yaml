@@ -9,6 +9,29 @@ spec:
   resources:
     requests:
       storage: 2000Gi
-  storageClassName: hdd-hostpath
+  storageClassName: local-storage
   volumeMode: Filesystem
   volumeName: servarr-media
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: servarr-media
+spec:
+  capacity:
+    storage: 2000Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /hdd-raid/servarr-media
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - lab
