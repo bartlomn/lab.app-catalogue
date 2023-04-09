@@ -37,7 +37,6 @@ transmission:
           port: 9091
     utptcp:
       enabled: true
-      nameOverride: transmission-utptcp
       type: ClusterIP
       # type: LoadBalancer
       # annotations:
