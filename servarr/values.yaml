@@ -38,6 +38,11 @@ transmission:
       ports:
         http:
           port: 9091
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/allow-shared-ip: transmission
+        metallb.universe.tf/loadBalancerIPs: 10.83.20.202
+      externalTrafficPolicy: Local
     utptcp:
       enabled: true
       type: LoadBalancer
