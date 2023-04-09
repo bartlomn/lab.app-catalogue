@@ -12,10 +12,6 @@ transmission:
   image:
     repository: linuxserver/transmission
     tag: "4.0.2"
-  # podSecurityContext:
-  #   runAsUser: 1000
-  #   runAsGroup: 1000
-  #   fsGroup: 1000
   controller:
     type: deployment
   env:
@@ -44,12 +40,11 @@ transmission:
           port: 9091
     utptcp:
       enabled: true
-      type: ClusterIP
-      # type: LoadBalancer
-      # annotations:
-      #   metallb.universe.tf/allow-shared-ip: transmission
-      #   metallb.universe.tf/loadBalancerIPs: 10.83.20.202
-      # externalTrafficPolicy: Local
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/allow-shared-ip: transmission
+        metallb.universe.tf/loadBalancerIPs: 10.83.20.202
+      externalTrafficPolicy: Local
       ports:
         utptcp:
           enabled: true
@@ -58,12 +53,11 @@ transmission:
           targetPort: 51413
     utpudp:
       enabled: true
-      type: ClusterIP
-      # type: LoadBalancer
-      # annotations:
-      #   metallb.universe.tf/allow-shared-ip: transmission
-      #   metallb.universe.tf/loadBalancerIPs: 10.83.20.202
-      # externalTrafficPolicy: Local
+      type: LoadBalancer
+      annotations:
+        metallb.universe.tf/allow-shared-ip: transmission
+        metallb.universe.tf/loadBalancerIPs: 10.83.20.202
+      externalTrafficPolicy: Local
       ports:
         utpudp:
           enabled: true
