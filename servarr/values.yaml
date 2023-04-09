@@ -23,6 +23,13 @@ transmission:
     PGID: 1000
     TZ: "Etc/UTC"
     PEERPORT: 51413
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 1.1.1.1
+    options:
+      - name: ndots
+        value: "5"
   probes:
     liveness:
       spec:
