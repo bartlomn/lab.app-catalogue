@@ -10,17 +10,17 @@ transmission:
   global:
     nameOverride: transmission
   image:
-    repository: hotio/qbittorrent
-    tag: "release-4.5.2"
+    repository: linuxserver/transmission
+    tag: "4.0.2"
   # podSecurityContext:
   #   runAsUser: 1000
   #   runAsGroup: 1000
+  #   fsGroup: 1000
   controller:
     type: deployment
   env:
     PUID: 1000
     PGID: 1000
-    UMASK: 002
     TZ: "Etc/UTC"
     PEERPORT: 51413
   probes:
@@ -34,48 +34,48 @@ transmission:
     main:
       ports:
         http:
-          port: 8080
-    # utptcp:
-    #   enabled: true
-    #   type: ClusterIP
+          port: 9091
+    utptcp:
+      enabled: true
+      type: ClusterIP
       # type: LoadBalancer
       # annotations:
       #   metallb.universe.tf/allow-shared-ip: transmission
       #   metallb.universe.tf/loadBalancerIPs: 10.83.20.202
       # externalTrafficPolicy: Local
-      # ports:
-      #   utptcp:
-      #     enabled: true
-      #     port: 51413
-      #     protocol: TCP
-      #     targetPort: 51413
-    # utpudp:
-    #   enabled: true
-    #   type: ClusterIP
-    #   # type: LoadBalancer
-    #   # annotations:
-    #   #   metallb.universe.tf/allow-shared-ip: transmission
-    #   #   metallb.universe.tf/loadBalancerIPs: 10.83.20.202
-    #   # externalTrafficPolicy: Local
-    #   ports:
-    #     utpudp:
-    #       enabled: true
-    #       port: 51413
-    #       protocol: UDP
-    #       targetPort: 51413
+      ports:
+        utptcp:
+          enabled: true
+          port: 51413
+          protocol: TCP
+          targetPort: 51413
+    utpudp:
+      enabled: true
+      type: ClusterIP
+      # type: LoadBalancer
+      # annotations:
+      #   metallb.universe.tf/allow-shared-ip: transmission
+      #   metallb.universe.tf/loadBalancerIPs: 10.83.20.202
+      # externalTrafficPolicy: Local
+      ports:
+        utpudp:
+          enabled: true
+          port: 51413
+          protocol: UDP
+          targetPort: 51413
   persistence:
     config:
       enabled: true
       mountPath: "/config"
       type: emptyDir
-    # downloads:
-    #   enabled: true
-    #   mountPath: "/downloads"
-    #   type: emptyDir
-    # watch:
-    #   enabled: true
-    #   mountPath: "/watch"
-    #   type: emptyDir
+    downloads:
+      enabled: true
+      mountPath: "/downloads"
+      type: emptyDir
+    watch:
+      enabled: true
+      mountPath: "/watch"
+      type: emptyDir
       # existingClaim: servarr-media
       # subPath: transmission
   # volumeClaimTemplates:
