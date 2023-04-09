@@ -12,9 +12,9 @@ transmission:
   image:
     repository: hotio/qbittorrent
     tag: "release-4.5.2"
-  podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
+  # podSecurityContext:
+  #   runAsUser: 1000
+  #   runAsGroup: 1000
   controller:
     type: deployment
   env:
