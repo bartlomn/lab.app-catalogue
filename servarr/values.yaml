@@ -7,8 +7,8 @@ namespace: servarr
 # based on
 # https://raw.githubusercontent.com/ishioni/homelab-ops/master/cluster/apps/media/transmission/helmrelease.yaml
 transmission:
-  # global:
-  #   nameOverride: transmission
+  global:
+    nameOverride: transmission
   image:
     repository: lscr.io/linuxserver/transmission
     tag: "4.0.2"
