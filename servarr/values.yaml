@@ -45,7 +45,8 @@ transmission:
       ports:
         utptcp:
           enabled: true
-          port: 51413
+          # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+          nodePort: 31413
           protocol: TCP
           targetPort: 51413
     utpudp:
@@ -54,7 +55,8 @@ transmission:
       ports:
         utpudp:
           enabled: true
-          port: 51413
+          # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+          nodePort: 31413
           protocol: UDP
           targetPort: 51413
   persistence:
