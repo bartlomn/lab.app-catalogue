@@ -11,7 +11,8 @@ services:
       - "8080"
     ports:
       - "8080"
-    networks: vpn-net
+    networks: 
+      - vpn-net
     restart: unless-stopped
     volumes:
       - /hdd-raid/servarr-media/qbittorrent/config:/config:rw
