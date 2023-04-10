@@ -49,6 +49,7 @@ transmission:
           nodePort: 31413
           protocol: TCP
           targetPort: 51413
+          port: 51413
     utpudp:
       enabled: true
       type: NodePort
