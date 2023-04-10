@@ -57,7 +57,7 @@ transmission:
         utpudp:
           enabled: true
           # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-          nodePort: 31413
+          nodePort: 31414
           protocol: UDP
           targetPort: 51413
           port: 51413
