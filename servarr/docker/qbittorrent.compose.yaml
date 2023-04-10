@@ -16,6 +16,8 @@ services:
     restart: unless-stopped
     volumes:
       - /hdd-raid/servarr-media/qbittorrent/config:/config
+      - /hdd-raid/servarr-media/qbittorrent/downloads:/downloads
+      - /hdd-raid/servarr-media/qbittorrent/watch:/watch
 
 networks:
   vpn-net:
