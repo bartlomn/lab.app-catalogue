@@ -14,6 +14,7 @@ transmission:
     tag: "4.0.2"
   controller:
     type: deployment
+    revisionHistoryLimit: 2
   env:
     PUID: 1000
     PGID: 1000
@@ -40,11 +41,7 @@ transmission:
           port: 9091
     utptcp:
       enabled: true
-      type: LoadBalancer
-      annotations:
-        metallb.universe.tf/allow-shared-ip: transmission
-        metallb.universe.tf/loadBalancerIPs: 10.83.20.202
-      externalTrafficPolicy: Local
+      type: ClusterIP
       ports:
         utptcp:
           enabled: true
@@ -53,11 +50,7 @@ transmission:
           targetPort: 51413
     utpudp:
       enabled: true
-      type: LoadBalancer
-      annotations:
-        metallb.universe.tf/allow-shared-ip: transmission
-        metallb.universe.tf/loadBalancerIPs: 10.83.20.202
-      externalTrafficPolicy: Local
+      type: ClusterIP
       ports:
         utpudp:
           enabled: true
