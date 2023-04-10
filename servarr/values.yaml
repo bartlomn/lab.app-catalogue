@@ -6,94 +6,94 @@ namespace: servarr
 
 # based on
 # https://raw.githubusercontent.com/ishioni/homelab-ops/master/cluster/apps/media/transmission/helmrelease.yaml
-transmission:
-  global:
-    nameOverride: transmission
-  image:
-    repository: linuxserver/transmission
-    tag: "4.0.2"
-  controller:
-    type: deployment
-    revisionHistoryLimit: 2
-  env:
-    PUID: 1000
-    PGID: 1000
-    TZ: "Etc/UTC"
-    PEERPORT: 51413
-  dnsPolicy: "None"
-  dnsConfig:
-    nameservers:
-      - 1.1.1.1
-    options:
-      - name: ndots
-        value: "5"
-  probes:
-    liveness:
-      spec:
-        timeoutSeconds: 30
-    readiness:
-      spec:
-        timeoutSeconds: 30
-  service:
-    main:
-      ports:
-        http:
-          port: 9091
-    utptcp:
-      enabled: true
-      type: NodePort
-      ports:
-        utptcp:
-          enabled: true
-          # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-          nodePort: 31413
-          protocol: TCP
-          targetPort: 51413
-          port: 51413
-    utpudp:
-      enabled: true
-      type: NodePort
-      ports:
-        utpudp:
-          enabled: true
-          # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
-          nodePort: 31414
-          protocol: UDP
-          targetPort: 51413
-          port: 51413
-  persistence:
-    config:
-      enabled: true
-      mountPath: "/config"
-      type: emptyDir
-    downloads:
-      enabled: true
-      mountPath: "/downloads"
-      type: emptyDir
-    watch:
-      enabled: true
-      mountPath: "/watch"
-      type: emptyDir
-      # existingClaim: servarr-media
-      # subPath: transmission
-  # volumeClaimTemplates:
-  #   - name: config
-  #     mountPath: /config
-      # storageClass: ssd-hostpath
-      # accessMode: ReadWriteOnce
-      # size: 100Mi
-  ingress:
-    main:
-      enabled: false
-      # ingressClassName: nginx
-      # annotations:
-      #   cert-manager.io/cluster-issuer: letsencrypt-prod
-      # hosts:
-      #   - host: transmission.bnowak.com
-      #     paths:
-      #       - path: /
-      #         pathType: Prefix
-      # tls:
-      # - hosts:
-      #   - transmission.bnowak.com
-      #   secretName: transmission-ingress-cert
+# transmission:
+#   global:
+#     nameOverride: transmission
+#   image:
+#     repository: linuxserver/transmission
+#     tag: "4.0.2"
+#   controller:
+#     type: deployment
+#     revisionHistoryLimit: 2
+#   env:
+#     PUID: 1000
+#     PGID: 1000
+#     TZ: "Etc/UTC"
+#     PEERPORT: 51413
+#   dnsPolicy: "None"
+#   dnsConfig:
+#     nameservers:
+#       - 1.1.1.1
+#     options:
+#       - name: ndots
+#         value: "5"
+#   probes:
+#     liveness:
+#       spec:
+#         timeoutSeconds: 30
+#     readiness:
+#       spec:
+#         timeoutSeconds: 30
+#   service:
+#     main:
+#       ports:
+#         http:
+#           port: 9091
+#     utptcp:
+#       enabled: true
+#       type: NodePort
+#       ports:
+#         utptcp:
+#           enabled: true
+#           # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+#           nodePort: 31413
+#           protocol: TCP
+#           targetPort: 51413
+#           port: 51413
+#     utpudp:
+#       enabled: true
+#       type: NodePort
+#       ports:
+#         utpudp:
+#           enabled: true
+#           # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+#           nodePort: 31414
+#           protocol: UDP
+#           targetPort: 51413
+#           port: 51413
+#   persistence:
+#     config:
+#       enabled: true
+#       mountPath: "/config"
+#       type: emptyDir
+#     downloads:
+#       enabled: true
+#       mountPath: "/downloads"
+#       type: emptyDir
+#     watch:
+#       enabled: true
+#       mountPath: "/watch"
+#       type: emptyDir
+#       # existingClaim: servarr-media
+#       # subPath: transmission
+#   # volumeClaimTemplates:
+#   #   - name: config
+#   #     mountPath: /config
+#       # storageClass: ssd-hostpath
+#       # accessMode: ReadWriteOnce
+#       # size: 100Mi
+#   ingress:
+#     main:
+#       enabled: false
+#       # ingressClassName: nginx
+#       # annotations:
+#       #   cert-manager.io/cluster-issuer: letsencrypt-prod
+#       # hosts:
+#       #   - host: transmission.bnowak.com
+#       #     paths:
+#       #       - path: /
+#       #         pathType: Prefix
+#       # tls:
+#       # - hosts:
+#       #   - transmission.bnowak.com
+#       #   secretName: transmission-ingress-cert
