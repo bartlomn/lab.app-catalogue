@@ -41,7 +41,7 @@ transmission:
           port: 9091
     utptcp:
       enabled: true
-      type: ClusterIP
+      type: NodePort
       ports:
         utptcp:
           enabled: true
@@ -50,7 +50,7 @@ transmission:
           targetPort: 51413
     utpudp:
       enabled: true
-      type: ClusterIP
+      type: NodePort
       ports:
         utpudp:
           enabled: true
