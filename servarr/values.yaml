@@ -59,6 +59,7 @@ transmission:
           nodePort: 31413
           protocol: UDP
           targetPort: 51413
+          port: 51413
   persistence:
     config:
       enabled: true
