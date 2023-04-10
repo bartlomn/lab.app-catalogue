@@ -15,8 +15,17 @@ services:
       - vpn-net
     restart: unless-stopped
     volumes:
-      - /hdd-raid/servarr-media/qbittorrent/config:/config:rw
+      - /hdd-raid/servarr-media/qbittorrent/config:/config
 
 networks:
   vpn-net:
-    external: true
+    driver: ipvlan
+    driver_opts:
+      parent: enp9s0
+      ipvlan_mode: l2
+    ipam:
+      config:
+        - subnet: 10.83.20.9/24
+          ip-range: 10.83.20.252/30
+          gateway: 10.83.20.9
+
