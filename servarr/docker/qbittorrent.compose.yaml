@@ -17,3 +17,6 @@ services:
     volumes:
       - /hdd-raid/servarr-media/qbittorrent/config:/config:rw
 
+networks:
+  vpn-net:
+    external: true
