@@ -26,6 +26,6 @@ networks:
     ipam:
       config:
         - subnet: 10.83.20.9/24
-          ip-range: 10.83.20.252/30
+          ip_range: 10.83.20.252/30
           gateway: 10.83.20.9
 
