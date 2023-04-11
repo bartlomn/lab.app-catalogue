@@ -25,9 +25,9 @@ prowlarr:
     pullPolicy: IfNotPresent
 
   env:
-    - PUID: 1000
-    - PGID: 1000
-    - TZ: "Etc/UTC"
+    PUID: 1000
+    PGID: 1000
+    TZ: "Etc/UTC"
 
   # -- Configure the services for the chart here.
   # Additional services can be added by adding a dictionary key similar to the 'main' service.
