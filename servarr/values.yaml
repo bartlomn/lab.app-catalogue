@@ -64,19 +64,19 @@ prowlarr:
       storageClass: ssd-hostpath
       size: 5Gi
 
-  dnsPolicy: "None"
-  dnsConfig:
-    nameservers:
-      - 10.83.20.9
-      - 10.152.183.10
-    searches:
-      - servarr.svc.cluster.local
-      - svc.cluster.local
-      - cluster.local
-      - bnowak.com
-    options:
-      - name: ndots
-        value: "5"
+  # dnsPolicy: "None"
+  # dnsConfig:
+  #   nameservers:
+  #     - 10.83.20.9
+  #     - 10.152.183.10
+  #   searches:
+  #     - servarr.svc.cluster.local
+  #     - svc.cluster.local
+  #     - cluster.local
+  #     - bnowak.com
+  #   options:
+  #     - name: ndots
+  #       value: "5"
 
 
 # based on
