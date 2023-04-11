@@ -67,13 +67,14 @@ prowlarr:
   dnsPolicy: "None"
   dnsConfig:
     nameservers:
+      - 1.1.1.1
       - 10.83.19.11
-    #   - 10.152.183.10
-    # searches:
-    #   - servarr.svc.cluster.local
-    #   - svc.cluster.local
-    #   - cluster.local
-    #   - bnowak.com
+      - 10.152.183.10
+    searches:
+      - servarr.svc.cluster.local
+      - svc.cluster.local
+      - cluster.local
+      - bnowak.com
     options:
       - name: ndots
         value: "5"
