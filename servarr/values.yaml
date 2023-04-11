@@ -67,8 +67,8 @@ prowlarr:
   dnsPolicy: "None"
   dnsConfig:
     nameservers:
-      - 10.152.183.10
       - 10.83.19.11
+      - 10.152.183.10
     searches:
       - servarr.svc.cluster.local
       - svc.cluster.local
