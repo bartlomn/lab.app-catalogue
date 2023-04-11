@@ -64,6 +64,21 @@ prowlarr:
       storageClass: ssd-hostpath
       size: 5Gi
 
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 10.152.183.10
+      - 10.83.19.11
+    searches:
+      - servarr.svc.cluster.local
+      - svc.cluster.local
+      - cluster.local
+      - bnowak.com
+    options:
+      - name: ndots
+        value: "5"
+
+
 # based on
 # https://raw.githubusercontent.com/ishioni/homelab-ops/master/cluster/apps/media/transmission/helmrelease.yaml
 # transmission:
