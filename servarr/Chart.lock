@@ -1,6 +1,6 @@
 dependencies:
-- name: prowlarr
-  repository: https://geek-cookbook.github.io/charts/
-  version: 4.5.2
-digest: sha256:6bdbab34ed4e51648c1ad61fa0759cf23b5abd4560944e81b1039cf2d25bc82f
-generated: "2023-04-10T17:59:12.562441+02:00"
+- name: app-template
+  repository: https://bjw-s.github.io/helm-charts/
+  version: 1.3.2
+digest: sha256:6c1e49d85911216f9dd0595b44c2a741dded2f66885cfee5a75210f88ded4a33
+generated: "2023-04-11T15:51:33.335575+02:00"

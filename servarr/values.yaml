@@ -4,6 +4,66 @@
 
 namespace: servarr
 
+prowlarr:
+  global:
+    # -- Set an override for the prefix of the fullname
+    nameOverride: prowlarr
+  
+  controller:
+    # -- enable the controller.
+    enabled: true
+    # -- Set the controller type.
+    # Valid options are deployment, daemonset, statefulset or cronjob
+    type: deployment
+
+  image:
+    # -- image repository
+    repository: linuxserver/prowlarr
+    # -- image tag
+    tag: latest
+    # -- image pull policy
+    pullPolicy: IfNotPresent
+
+  env:
+    - PUID: 1000
+    - PGID: 1000
+    - TZ: "Etc/UTC"
+
+  # -- Configure the services for the chart here.
+  # Additional services can be added by adding a dictionary key similar to the 'main' service.
+  # @default -- See below
+  service:
+    main:
+      # -- Enables or disables the service
+      enabled: true
+      # -- Configure the Service port information here.
+      # Additional ports can be added by adding a dictionary key similar to the 'http' service.
+      # @default -- See below
+      ports:
+        http:
+          # -- Enables or disables the port
+          enabled: true
+
+          # -- Make this the primary port (used in probes, notes, etc...)
+          # If there is more than 1 service, make sure that only 1 port is marked as primary.
+          primary: true
+
+          # -- The port number
+          port: 9696
+
+  # -- Configure persistence for the chart here.
+  # Additional items can be added by adding a dictionary key similar to the 'config' key.
+  # [[ref]](https://bjw-s.github.io/helm-charts/docs/common-library/common-library-storage)
+  # @default -- See below
+  persistence:
+    # -- Default persistence for configuration files.
+    # @default -- See below
+    config:
+      # -- Enables or disables the persistence item
+      enabled: true
+      storageClass: ssd-hostpath
+      size: 5Gi
+
 # based on
 # https://raw.githubusercontent.com/ishioni/homelab-ops/master/cluster/apps/media/transmission/helmrelease.yaml
 # transmission:
