@@ -17,19 +17,19 @@ ingress-nginx:
             name: letsencrypt-prod
             kind: ClusterIssuer
     metrics:
-      enabled: true
+      enabled: false
       service:
         annotations:
           prometheus.io/scrape: "true"
           prometheus.io/port: "10254"
           prometheus.io/scheme: http
       serviceMonitor:
-        enabled: true
+        enabled: false
       prometheusRule:
         enabled: false
     service:
       type: LoadBalancer
-      loadBalancerIP: 10.83.20.201
+      loadBalancerIP: 10.83.20.101
   defaultBackend:
     enabled: false
 
