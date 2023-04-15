@@ -16,4 +16,16 @@ argo-cd:
     extensions:
       enabled: true
     ingress:
-      enabled: false
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/ssl-passthrough: "false"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      ingressClassName: nginx
+      hosts:
+      - argocd.bnowak.com
+      tls:
+      - hosts:
+        - argocd.bnowak.com
+        secretName: argocd-ingress-cert
+      https: true
