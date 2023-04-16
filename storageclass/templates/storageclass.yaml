@@ -14,3 +14,14 @@ volumeBindingMode: WaitForFirstConsumer
 mountOptions:
   - hard
   - nfsvers=4.1
+---
+# regular hostpath
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ssd-raid-hostpath
+provisioner: microk8s.io/hostpath
+reclaimPolicy: Delete
+parameters:
+  pvDir: /ssd-raid/hostpath
+volumeBindingMode: WaitForFirstConsumer
