@@ -98,4 +98,49 @@ kube-prometheus-stack:
         enabled: true      
 
   cleanPrometheusOperatorObjectNames: true
-    
+
+loki:
+  loki:
+    revisionHistoryLimit: 3
+    auth_enabled: false
+    storage:
+      type: filesystem
+  test:
+    enabled: false
+  write:
+    replicas: 0
+    # persistence:
+    #   enableStatefulSetAutoDeletePVC: true
+    #   size: 20Gi
+    #   storageClass: ssd-raid-hostpath
+  read:
+    replicas: 0
+    # persistence:
+    #   enableStatefulSetAutoDeletePVC: true
+    #   size: 20Gi
+    #   storageClass: ssd-raid-hostpath
+  backend:
+    replicas: 0
+    # persistence:
+    #   enableStatefulSetAutoDeletePVC: true
+    #   size: 20Gi
+    #   storageClass: ssd-raid-hostpath
+  singleBinary:
+    replicas: 1
+    persistence:
+      enableStatefulSetAutoDeletePVC: true
+      size: 20Gi
+      storageClass: ssd-raid-hostpath
+  gateway:
+    enabled: false
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+    - loki.bnowak.com
+    tls:
+    - hosts:
+      - loki.bnowak.com
+      secretName: loki-ingress-cert
