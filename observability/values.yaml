@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-namespace: monitoring
+namespace: observability
 
 # https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack?modal=values
 kube-prometheus-stack:
@@ -24,7 +24,7 @@ kube-prometheus-stack:
       storage:
         volumeClaimTemplate:
           spec:
-            storageClassName: big-hostpath
+            storageClassName: observability-storage
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
@@ -45,7 +45,7 @@ kube-prometheus-stack:
     persistence:
       enabled: true
       size: 50Gi
-      storageClassName: big-hostpath
+      storageClassName: observability-storage
     plugins:
       - grafana-clock-panel
       - grafana-simple-json-datasource
@@ -85,10 +85,10 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: big-hostpath
+            storageClassName: observability-storage
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
-                storage: 100Gi
+                storage: 50Gi
   cleanPrometheusOperatorObjectNames: true
     
