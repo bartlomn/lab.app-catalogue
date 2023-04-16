@@ -126,7 +126,7 @@ loki:
     #   size: 20Gi
     #   storageClass: ssd-raid-hostpath
   singleBinary:
-    replicas: 1
+    replicas: 3
     persistence:
       enableStatefulSetAutoDeletePVC: true
       size: 20Gi
