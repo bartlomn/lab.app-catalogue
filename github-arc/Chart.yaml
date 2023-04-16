@@ -21,12 +21,12 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.27.2"
+appVersion: "0.27.0"
 
 
 # Manage the dependencies of a chart
 # https://helm.sh/docs/topics/charts/#chart-dependencies
 dependencies:
 - name: actions-runner-controller
-  version: "0.23.1"
+  version: "0.22.0"
   repository: "https://actions-runner-controller.github.io/actions-runner-controller"
