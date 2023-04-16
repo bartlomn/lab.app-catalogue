@@ -1,30 +1,16 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: ssd-hostpath
-  annotations:
-    storageclass.kubernetes.io/is-default-class: "true"
-provisioner: microk8s.io/hostpath
-reclaimPolicy: Delete
-parameters:
-  pvDir: /ssd-raid/hostpath-pvs
-volumeBindingMode: WaitForFirstConsumer
+# https://github.com/kubernetes-csi/csi-driver-nfs/blob/master/docs/driver-parameters.md
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: hdd-hostpath
-provisioner: microk8s.io/hostpath
-reclaimPolicy: Delete
+  name: observability-storage
+provisioner: nfs.csi.k8s.io
 parameters:
-  pvDir: /hdd-raid/hostpath-pvs
+  server: lab.local.lan
+  share: /ssd-raid/nfs-share
+  subDir: observability
+reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: local-storage
-provisioner: kubernetes.io/no-provisioner
-reclaimPolicy: Retain
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: true
+mountOptions:
+  - hard
+  - nfsvers=4.1
